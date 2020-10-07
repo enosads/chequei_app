@@ -1,3 +1,4 @@
+import 'package:chequei/pages/cadastrar/cadastrar_page.dart';
 import 'package:chequei/pages/home_page/home_page.dart';
 import 'package:chequei/pages/login/login_api.dart';
 import 'package:chequei/pages/perfil/usuario_controller.dart';
@@ -65,5 +66,9 @@ class LoginPageController extends GetxController {
         onConfirm: () => Get.back(),
       );
     }
+  }
+
+  onClickCadastrar() {
+    Get.to(CadastrarPage());
   }
 }

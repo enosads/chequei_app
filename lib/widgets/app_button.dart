@@ -23,6 +23,7 @@ class AppButton extends StatelessWidget {
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(24),
         ),
+        color: color,
         child: showProgress
             ? Center(
                 child: CircularProgressIndicator(
@@ -31,6 +32,7 @@ class AppButton extends StatelessWidget {
               )
             : Text(
                 text,
+                style: TextStyle(color: textColor),
               ),
         padding: EdgeInsets.all(12),
         onPressed: onPressed,

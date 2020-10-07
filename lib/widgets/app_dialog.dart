@@ -7,7 +7,7 @@ class AppDialog {
   String textConfirm;
   Function onConfirm;
   Function onCancel;
-  Color colorConfirm;
+  Color confirmColor;
 
   AppDialog(
     this.content, {
@@ -15,23 +15,22 @@ class AppDialog {
     this.textConfirm,
     this.onConfirm,
     this.onCancel,
-    this.colorConfirm,
+    this.confirmColor,
   });
 
   show() => Get.defaultDialog(
-        title: 'Fast Mobi',
+        title: 'Chequei',
         content: content,
         textCancel: textCancel != null ? textCancel : null,
-        backgroundColor: Colors.black,
         onCancel: onCancel,
         confirm: RaisedButton(
-
+          color: confirmColor,
           materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
           shape:
               RoundedRectangleBorder(borderRadius: BorderRadius.circular(100)),
           child: Text(
-            textConfirm != null? textConfirm : 'Sim',
-            style: TextStyle(color: Colors.black),
+            textConfirm != null ? textConfirm : 'Sim',
+            style: TextStyle(color: Colors.white),
           ),
           onPressed: onConfirm,
         ),

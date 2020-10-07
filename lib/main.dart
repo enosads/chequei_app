@@ -1,6 +1,7 @@
 import 'package:chequei/pages/splash/splash_page.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 
 void main() {
   runApp(
@@ -12,6 +13,11 @@ void main() {
         dividerColor: Colors.transparent,
       ),
       home: SplashPage(),
+      localizationsDelegates: [
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate
+      ],
+      supportedLocales: [const Locale('pt', 'BR')],
     ),
   );
 }

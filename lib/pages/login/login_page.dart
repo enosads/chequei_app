@@ -57,11 +57,21 @@ class LoginPage extends StatelessWidget {
                           ),
                           SizedBox(height: 24.0),
                           AppButton(
-                            'Entrar',
+                            'ENTRAR',
+                            color: Colors.blue,
                             onPressed: () => _.onClickLogin(),
                             showProgress: false,
+                            textColor: Colors.white,
+                          ),
+                          SizedBox(height: 8.0),
+                          AppButton(
+                            'CADASTRAR',
+                            onPressed: () => _.onClickCadastrar(),
+                            showProgress: false,
+                            textColor: Colors.grey,
                           ),
                           SizedBox(height: 24.0),
+
                         ],
                       ),
                     ),

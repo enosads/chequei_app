@@ -18,6 +18,8 @@ class AppText extends StatelessWidget {
   Color color;
   bool readOnly;
   TextAlign textAlign;
+  bool uppercase;
+  bool cpf;
 
   AppText({
     this.label,
@@ -36,6 +38,8 @@ class AppText extends StatelessWidget {
     this.color,
     this.readOnly = false,
     this.textAlign,
+    this.uppercase = false,
+    this.cpf = false,
   });
 
   @override
@@ -51,7 +55,13 @@ class AppText extends StatelessWidget {
                   MaskTextInputFormatter(
                       mask: '##/##/####', filter: {"#": RegExp(r'[0-9]')})
                 ]
-              : null,
+              : cpf
+                  ? [
+                      MaskTextInputFormatter(
+                          mask: '###.###.###-##',
+                          filter: {"#": RegExp(r'[0-9]')})
+                    ]
+                  : null,
       readOnly: readOnly,
       autofocus: autofocus,
       focusNode: focusNode,
@@ -59,6 +69,8 @@ class AppText extends StatelessWidget {
       obscureText: password,
       validator: validator,
       keyboardType: keyboardType,
+      textCapitalization:
+          uppercase ? TextCapitalization.characters : TextCapitalization.none,
       textAlign: textAlign != null ? textAlign : TextAlign.start,
       textInputAction: textInputAction,
       onFieldSubmitted: onFieldSubmitted != null
@@ -71,7 +83,7 @@ class AppText extends StatelessWidget {
               }
             },
       style: TextStyle(
-        color: color != null ? color : Colors.black,
+        color: color != null ? color : null,
       ),
       decoration: InputDecoration(
         fillColor: Colors.red,
