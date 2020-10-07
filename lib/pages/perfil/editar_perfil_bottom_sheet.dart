@@ -101,6 +101,8 @@ class EditarPerfilBottomSheet {
                           title: Obx(
                             () => AppButton(
                               'Salvar ',
+                              color: Colors.blue,
+                              textColor: Colors.white,
                               onPressed: _.salvarPressed.value
                                   ? null
                                   : () => _.onClickSalvar(),

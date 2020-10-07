@@ -1,7 +1,9 @@
 import 'package:chequei/models/erro_model.dart';
 import 'package:chequei/models/usuario_model.dart';
+import 'package:chequei/pages/perfil/usuario_api.dart';
 import 'package:chequei/pages/perfil/usuario_controller.dart';
 import 'package:chequei/utils/api_response.dart';
+import 'package:chequei/widgets/app_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -77,23 +79,22 @@ class EditarPerfilBottomSheetController extends GetxController {
   }
 
   onClickSalvar() async {
-    //   salvarPressed.value = true;
-    //   String nome = tNome.text;
-    //   String email = tEmail.text;
-    //   String telefone = tTelefone.text;
-    //
-    //   response = await UsuarioApi.update(nome, email, telefone);
-    //   if (response.ok) {
-    //     UsuarioController.to.getUsuario();
-    //     Get.back();
-    //     AppDialog(
-    //       Text('Perfil salvo com sucesso.'),
-    //       onCancel: () => Get.back(),
-    //       textCancel: "Ok",
-    //     );
-    //   } else {
-    //     formKey.currentState.validate();
-    //   }
-    //   salvarPressed.value = false;
+    salvarPressed.value = true;
+    String date =
+        "${dataNascimento.value.value.year}-${dataNascimento.value.value.month}-${dataNascimento.value.value.day}";
+    response =
+        await UsuarioApi.update(tNome.text, tEmail.text, tTelefone.text, date);
+    if (response.ok) {
+      UsuarioController.to.getUsuario();
+      Get.back();
+      AppDialog(
+        Text('Perfil salvo com sucesso.'),
+        onCancel: () => Get.back(),
+        textCancel: "Ok",
+      );
+    } else {
+      formKey.currentState.validate();
+    }
+    salvarPressed.value = false;
   }
 }

@@ -5,7 +5,8 @@ class Factory {
 
   Factory.internal();
 
-  final String _ipDefault = 'https://chequei.herokuapp.com';
+  // final String _ipDefault = 'https://chequei.herokuapp.com';
+  final String _ipDefault = 'http://192.168.1.4:8000';
 
   String getUrl() {
     return '$_ipDefault/mobile/';
