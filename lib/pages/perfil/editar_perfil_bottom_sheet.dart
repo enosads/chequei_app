@@ -84,7 +84,8 @@ class EditarPerfilBottomSheet {
                                 child: DateTimePicker(
                                   locale: Locale('pt', 'BR'),
                                   type: DateTimePickerType.date,
-                                  initialValue: _.dataNascimento.value.value.toString(),
+                                  initialValue:
+                                      _.dataNascimento.value.value.toString(),
                                   firstDate: DateTime(1900),
                                   lastDate: DateTime(DateTime.now().year),
                                   onChanged: (val) => _.dataNascimento.value

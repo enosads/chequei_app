@@ -8,6 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class LoginPageController extends GetxController {
+  final obscureTextSenha = true.obs;
   LoginPageController get to => Get.find();
 
   @override
@@ -63,12 +64,18 @@ class LoginPageController extends GetxController {
     } else {
       AppDialog(
         Text(response.msg),
+        textConfirm: 'Ok',
         onConfirm: () => Get.back(),
-      );
+      ).show();
     }
   }
 
   onClickCadastrar() {
     Get.to(CadastrarPage());
   }
+
+  void onPressedObscureSenha() {
+    obscureTextSenha.value = !obscureTextSenha.value;
+  }
+
 }

@@ -8,9 +8,10 @@ Future<http.Response> get(String url) async {
   return response;
 }
 
-Future<http.Response> post(String url, {body}) async {
-  final headers = await _headers();
-  var response = await http.post(url, body: body, headers: headers);
+
+Future<http.Response> post(String url, {body, headers}) async {
+  final h = headers ?? await _headers();
+  var response = await http.post(url, body: body, headers: h);
   return response;
 }
 

@@ -47,13 +47,32 @@ class LoginPage extends StatelessWidget {
                             textInputAction: TextInputAction.next,
                           ),
                           SizedBox(height: 16.0),
-                          AppText(
-                            hint: 'Senha',
-                            controller: _.tSenha,
-                            password: true,
-                            validator: _.validateSenha,
-                            focusNode: _.focusSenha,
-                            onFieldSubmitted: (next) => _.onClickLogin(),
+                          Obx(
+                            () => Stack(
+                              alignment: Alignment.centerRight,
+                              children: [
+                                AppText(
+                                  hint: 'Senha',
+                                  controller: _.tSenha,
+                                  password: _.obscureTextSenha.value,
+                                  validator: _.validateSenha,
+                                  focusNode: _.focusSenha,
+                                  onFieldSubmitted: (next) => _.onClickLogin(),
+                                ),
+                                Container(
+                                  margin: EdgeInsets.only(right: 8),
+                                  child: IconButton(
+                                    icon: Icon(
+                                      _.obscureTextSenha.value
+                                          ? Icons.visibility
+                                          : Icons.visibility_off,
+                                      color: Colors.blue,
+                                    ),
+                                    onPressed: _.onPressedObscureSenha,
+                                  ),
+                                )
+                              ],
+                            ),
                           ),
                           SizedBox(height: 24.0),
                           AppButton(
@@ -71,7 +90,6 @@ class LoginPage extends StatelessWidget {
                             textColor: Colors.grey,
                           ),
                           SizedBox(height: 24.0),
-
                         ],
                       ),
                     ),

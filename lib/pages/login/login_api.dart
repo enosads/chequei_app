@@ -33,7 +33,7 @@ class LoginApi {
 
         return ApiResponse.ok(result: user);
       }
-      return ApiResponse.error(msg: mapResponse['erro']);
+      return ApiResponse.error(msg: mapResponse['error']);
     } catch (error, exception) {
       print('Erro no login: $error > $exception');
       return ApiResponse.error(msg: 'Não foi possível fazer o login');

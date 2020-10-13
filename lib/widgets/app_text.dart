@@ -20,6 +20,8 @@ class AppText extends StatelessWidget {
   TextAlign textAlign;
   bool uppercase;
   bool cpf;
+  Key formKey;
+  ValueChanged<String> onChanged;
 
   AppText({
     this.label,
@@ -40,6 +42,8 @@ class AppText extends StatelessWidget {
     this.textAlign,
     this.uppercase = false,
     this.cpf = false,
+    this.onChanged,
+    this.formKey,
   });
 
   @override
@@ -69,6 +73,8 @@ class AppText extends StatelessWidget {
       obscureText: password,
       validator: validator,
       keyboardType: keyboardType,
+      onChanged: onChanged,
+      key: formKey ?? null,
       textCapitalization:
           uppercase ? TextCapitalization.characters : TextCapitalization.none,
       textAlign: textAlign != null ? textAlign : TextAlign.start,

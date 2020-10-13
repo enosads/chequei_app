@@ -46,27 +46,26 @@ class CadastrarPage extends StatelessWidget {
                       AppText(
                         controller: _.tNome,
                         label: 'Nome',
-                        nextFocus: _.focusEmail,
                         textInputAction: TextInputAction.next,
                         keyboardType: TextInputType.text,
+                        validator: _.validateNome,
                       ),
                       SizedBox(height: 16),
                       AppText(
                         controller: _.tEmail,
                         label: 'E-mail',
-                        nextFocus: _.focusTelefone,
-                        focusNode: _.focusEmail,
                         textInputAction: TextInputAction.next,
                         keyboardType: TextInputType.emailAddress,
+                        validator: _.validateEmail,
                       ),
                       SizedBox(height: 16),
                       AppText(
                         controller: _.tTelefone,
                         label: 'Telefone',
-                        focusNode: _.focusTelefone,
                         textInputAction: TextInputAction.next,
                         keyboardType: TextInputType.phone,
                         telefone: true,
+                        validator: _.validateTelefone,
                       ),
                       SizedBox(height: 16),
                       Stack(
@@ -106,6 +105,7 @@ class CadastrarPage extends StatelessWidget {
                         textInputAction: TextInputAction.next,
                         keyboardType: TextInputType.number,
                         cpf: true,
+                        validator: _.validateCpf,
                       ),
                       SizedBox(height: 16),
                       AppText(
@@ -113,22 +113,79 @@ class CadastrarPage extends StatelessWidget {
                         label: 'Username',
                         textInputAction: TextInputAction.next,
                         keyboardType: TextInputType.text,
+                        validator: _.validateUsername,
                       ),
                       SizedBox(height: 16),
-                      AppText(
-                        controller: _.tSenha,
-                        label: 'Senha',
-                        textInputAction: TextInputAction.next,
-                        keyboardType: TextInputType.text,
-                        password: true,
-                      ),
-                      SizedBox(height: 16),
-                      AppText(
-                        controller: _.tRepetirSenha,
-                        label: 'Repetir senha',
-                        textInputAction: TextInputAction.next,
-                        keyboardType: TextInputType.text,
-                        password: true,
+                      Form(
+                        key: _.formKeySenha,
+                        child: Column(
+                          children: [
+                            Obx(() => Stack(
+                                  alignment: Alignment.topRight,
+                                  children: [
+                                    AppText(
+                                      controller: _.tSenha,
+                                      label: 'Senha',
+                                      onChanged: (String value) {
+                                        _.formKeySenha.currentState.validate();
+                                      },
+                                      password: _.obscureTextSenha.value,
+                                      textInputAction: TextInputAction.next,
+                                      keyboardType: TextInputType.text,
+                                      validator: _.validateSenha,
+                                    ),
+                                    Container(
+                                      margin: EdgeInsets.only(right: 8),
+                                      child: IconButton(
+                                        icon: Icon(_.obscureTextSenha.value
+                                            ? Icons.visibility
+                                            : Icons.visibility_off),
+                                        onPressed: _.onPressedObscureSenha,
+                                      ),
+                                    )
+                                  ],
+                                )),
+                            SizedBox(
+                              height: 16,
+                            ),
+                            Obx(
+                              () => Stack(
+                                alignment: _.obscureTextRepetirSenha.value
+                                    ? Alignment.topRight
+                                    : Alignment.centerRight,
+                                children: [
+                                  AppText(
+                                    controller: _.tConfirmarSenha,
+                                    label: 'Confirmar senha',
+                                    password: _.obscureTextRepetirSenha.value,
+                                    textInputAction: TextInputAction.next,
+                                    keyboardType: TextInputType.text,
+                                    onFieldSubmitted: (v) {
+                                      _.onClickCadastrar();
+                                      Get.focusScope.unfocus();
+                                    },
+                                    onChanged: (String value) {
+                                      _.formKeySenha.currentState.validate();
+                                    },
+                                    validator: _.validateRepetirSenha,
+                                  ),
+                                  Container(
+                                    margin: EdgeInsets.only(right: 8),
+                                    child: IconButton(
+                                      icon: Icon(_.obscureTextRepetirSenha.value
+                                          ? Icons.visibility
+                                          : Icons.visibility_off),
+                                      onPressed: _.onPressedObscureRepetirSenha,
+                                    ),
+                                  )
+                                ],
+                              ),
+                            ),
+                            SizedBox(
+                              height: 16,
+                            ),
+                          ],
+                        ),
                       ),
                       SizedBox(height: 16),
                       AppButton(

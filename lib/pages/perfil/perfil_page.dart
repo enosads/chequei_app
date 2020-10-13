@@ -88,7 +88,7 @@ class PerfilPage extends StatelessWidget {
                     Icons.person,
                   ),
                   title: TitleTile(
-                    _.usuario.nome.value,
+                    '${_.usuario.nome.value} (${_.usuario.username.value})',
                   ),
                   subtitle: 'Nome',
                 ),
@@ -142,7 +142,7 @@ class PerfilPage extends StatelessWidget {
       textCancel: 'Cancelar',
       confirmColor: Colors.red,
       onConfirm: () {
-        Prefs.setString('lastLogin', _.usuario.username);
+        Prefs.setString('lastLogin', _.usuario.username.value);
         _.clear();
         Get.back();
         Get.off(
