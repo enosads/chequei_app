@@ -1,3 +1,4 @@
+import 'package:chequei/pages/enderecos/enderecos_page.dart';
 import 'package:chequei/pages/login/login_page.dart';
 import 'package:chequei/pages/perfil/editar_perfil_bottom_sheet.dart';
 import 'package:chequei/pages/perfil/usuario_controller.dart';
@@ -25,6 +26,8 @@ class PerfilPage extends StatelessWidget {
                   onSelected: (value) {
                     if (value == 'Perfil') {
                       EditarPerfilBottomSheet.show();
+                    } else if (value == 'Enderecos') {
+                      onClickEnderecos();
                     } else if (value == 'Sair') {
                       _onClickSair(_);
                     }
@@ -37,6 +40,10 @@ class PerfilPage extends StatelessWidget {
                     PopupMenuItem(
                       value: 'Perfil',
                       child: Text('Editar perfil'),
+                    ),
+                    PopupMenuItem(
+                      value: 'Enderecos',
+                      child: Text('Meus endereços'),
                     ),
                     PopupMenuItem(
                       value: 'Sair',
@@ -120,7 +127,8 @@ class PerfilPage extends StatelessWidget {
                     leading: Icon(
                       Icons.event,
                     ),
-                    title: TitleTile(DateUtil.format(_.usuario.dataNascimento.value)),
+                    title: TitleTile(
+                        DateUtil.format(_.usuario.dataNascimento.value)),
                     subtitle: 'Data de nascimento'),
               ],
             ),
@@ -150,5 +158,9 @@ class PerfilPage extends StatelessWidget {
         );
       },
     ).show();
+  }
+
+  void onClickEnderecos() {
+    Get.to(EnderecosPage());
   }
 }

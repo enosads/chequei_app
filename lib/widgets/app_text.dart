@@ -21,6 +21,7 @@ class AppText extends StatelessWidget {
   bool uppercase;
   bool cpf;
   Key formKey;
+  bool cep;
   ValueChanged<String> onChanged;
 
   AppText({
@@ -44,6 +45,7 @@ class AppText extends StatelessWidget {
     this.cpf = false,
     this.onChanged,
     this.formKey,
+    this.cep = false,
   });
 
   @override
@@ -65,7 +67,13 @@ class AppText extends StatelessWidget {
                           mask: '###.###.###-##',
                           filter: {"#": RegExp(r'[0-9]')})
                     ]
-                  : null,
+                  : cep
+                      ? [
+                          MaskTextInputFormatter(
+                              mask: '#####-###',
+                              filter: {"#": RegExp(r'[0-9]')})
+                        ]
+                      : null,
       readOnly: readOnly,
       autofocus: autofocus,
       focusNode: focusNode,

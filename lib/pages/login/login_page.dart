@@ -64,8 +64,8 @@ class LoginPage extends StatelessWidget {
                                   child: IconButton(
                                     icon: Icon(
                                       _.obscureTextSenha.value
-                                          ? Icons.visibility
-                                          : Icons.visibility_off,
+                                          ? Icons.visibility_off
+                                          : Icons.visibility,
                                       color: Colors.blue,
                                     ),
                                     onPressed: _.onPressedObscureSenha,
