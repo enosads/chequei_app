@@ -74,6 +74,7 @@ class CadastrarPage extends StatelessWidget {
                             controller: TextEditingController(text: '.'),
                             label: 'Data de nascimento',
                             readOnly: true,
+                            color: Colors.white,
                           ),
                           Container(
                             width: Get.width,

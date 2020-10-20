@@ -16,9 +16,9 @@ class CadastrarPageController extends GetxController {
   ApiResponse<Usuario> response;
   final obscureTextSenha = true.obs;
   final obscureTextRepetirSenha = true.obs;
-  TextEditingController tSenha = TextEditingController(text: 'enosenos');
+  TextEditingController tSenha = TextEditingController(text: '');
   TextEditingController tConfirmarSenha =
-      TextEditingController(text: 'enosenos');
+      TextEditingController(text: '');
 
   CadastrarPageController get to => Get.find();
   TextEditingController tEmail;
@@ -35,13 +35,13 @@ class CadastrarPageController extends GetxController {
 
   @override
   void onInit() {
-    tEmail = TextEditingController(text: 'enosads@gmail.com');
-    tCpf = TextEditingController(text: '118.861.574-21');
-    tNome = TextEditingController(text: 'Enos Andrade');
-    tUsername = TextEditingController(text: 'enosads');
-    tTelefone = TextEditingController(text: '(83)99195-5852');
-    tSenha = TextEditingController(text: '(83)99195-5852');
-    tConfirmarSenha = TextEditingController(text: '(83)99195-5852');
+    tEmail = TextEditingController(text: '');
+    tCpf = TextEditingController(text: '');
+    tNome = TextEditingController(text: '');
+    tUsername = TextEditingController(text: '');
+    tTelefone = TextEditingController(text: '');
+    tSenha = TextEditingController(text: '');
+    tConfirmarSenha = TextEditingController(text: '');
     super.onInit();
   }
 
