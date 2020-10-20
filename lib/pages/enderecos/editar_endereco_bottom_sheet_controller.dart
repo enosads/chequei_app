@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:chequei/models/endereco_model.dart';
 import 'package:chequei/models/erro_model.dart';
 import 'package:chequei/pages/enderecos/endereco_api.dart';
@@ -65,6 +67,9 @@ class EditarEnderecoBottomSheetController extends GetxController {
       dropEstados.add('Estado');
     }
     dropEstados.addAll(Endereco.getEstados());
+    if (endereco != null) {
+      estadoSelecionado.value = endereco.estado.value;
+    }
     update();
     return;
   }
