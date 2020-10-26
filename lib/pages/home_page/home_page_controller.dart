@@ -1,3 +1,4 @@
+import 'package:chequei/pages/eventos/eventos_page.dart';
 import 'package:chequei/pages/perfil/perfil_page.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -11,9 +12,7 @@ class HomePageController extends GetxController {
   @override
   void onInit() {
     pages = [
-      Container(
-        color: Colors.red,
-      ),
+      EventosPage(),
       PerfilPage(),
     ];
   }

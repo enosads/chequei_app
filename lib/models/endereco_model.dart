@@ -155,4 +155,6 @@ class Endereco {
   static const String SAO_PAULO = 'SP';
   static const String SERGIPE = 'SE';
   static const String TOCANTINS = 'TO';
+
+
 }
