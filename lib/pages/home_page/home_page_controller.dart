@@ -1,3 +1,4 @@
+import 'package:chequei/pages/enderecos/enderecos_page_controller.dart';
 import 'package:chequei/pages/eventos/eventos_page.dart';
 import 'package:chequei/pages/perfil/perfil_page.dart';
 import 'package:flutter/material.dart';
@@ -11,6 +12,7 @@ class HomePageController extends GetxController {
 
   @override
   void onInit() {
+    Get.put(EnderecosController());
     pages = [
       EventosPage(),
       PerfilPage(),

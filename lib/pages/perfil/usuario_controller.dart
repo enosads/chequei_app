@@ -1,5 +1,4 @@
 import 'package:chequei/models/usuario_model.dart';
-import 'package:chequei/pages/enderecos/enderecos_page_controller.dart';
 import 'package:chequei/pages/perfil/usuario_api.dart';
 import 'package:chequei/pages/splash/splash_page_controller.dart';
 import 'package:chequei/utils/prefs.dart';
@@ -12,15 +11,8 @@ class UsuarioController extends GetxController {
 
   @override
   void onInit() {
-    init();
-  }
-
-  void init() async {
     splash = true;
-
-    if (await getUsuario()) {
-      Get.put(EnderecosController());
-    }
+    getUsuario();
   }
 
   getUsuario() async {
