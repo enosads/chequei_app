@@ -2,8 +2,8 @@ import 'package:chequei/models/endereco_model.dart';
 import 'package:chequei/pages/enderecos/endereco_api.dart';
 import 'package:get/get.dart';
 
-class EnderecosPageController extends GetxController {
-  static EnderecosPageController get to => Get.find();
+class EnderecosController extends GetxController {
+  static EnderecosController get to => Get.find();
 
   List<Endereco> enderecos;
 

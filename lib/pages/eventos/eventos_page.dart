@@ -1,5 +1,6 @@
 import 'package:chequei/pages/eventos/eventos_controller.dart';
 import 'package:chequei/pages/eventos/eventos_listview.dart';
+import 'package:chequei/pages/eventos/novo_evento_bottom_sheet.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -52,7 +53,7 @@ class EventosPage extends StatelessWidget {
             ),
             body: _body(_),
             floatingActionButton: FloatingActionButton(
-              onPressed: () {},
+              onPressed: () => NovoEventoBottomSheet.show(),
               child: Icon(Icons.add),
 
             ),

@@ -31,7 +31,7 @@ class EventoListView extends StatelessWidget {
                         margin: EdgeInsets.only(
                             top: 16, left: 16, right: 16, bottom: 8),
                         child: Text(
-                          evento.descricao,
+                          evento.descricao.value,
                           style: TextStyle(
                               color: Colors.blue,
                               fontSize: 20,

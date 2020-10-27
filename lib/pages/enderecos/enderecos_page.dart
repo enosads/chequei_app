@@ -11,8 +11,8 @@ class EnderecosPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GetBuilder<EnderecosPageController>(
-      init: EnderecosPageController(),
+    return GetBuilder<EnderecosController>(
+      init: EnderecosController(),
       builder: (_) {
         return Scaffold(
           appBar: AppBar(
@@ -32,7 +32,7 @@ class EnderecosPage extends StatelessWidget {
     );
   }
 
-  _body(EnderecosPageController _) {
+  _body(EnderecosController _) {
     return RefreshIndicator(
       onRefresh: () => _.fetchEnderecos(),
       child: _.enderecos == null

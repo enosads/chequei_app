@@ -33,6 +33,7 @@ class AppBottomSheet extends StatelessWidget {
               title: TitleTile(
                 title,
                 bold: true,
+                color: Colors.blue,
               ),
             )
           : Container(),

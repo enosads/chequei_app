@@ -14,11 +14,11 @@ class EnderecosListView extends StatelessWidget {
     return ListView.builder(
       padding: EdgeInsets.symmetric(vertical: 8),
       itemBuilder: (context, index) {
-        Endereco endereco = EnderecosPageController.to.enderecos[index];
+        Endereco endereco = EnderecosController.to.enderecos[index];
         return Container(
           margin: EdgeInsets.only(
               top: 8,
-              bottom: EnderecosPageController.to.enderecos.length - 1 == index
+              bottom: EnderecosController.to.enderecos.length - 1 == index
                   ? 96
                   : 4,
               right: 8,
@@ -57,7 +57,7 @@ class EnderecosListView extends StatelessWidget {
           ),
         );
       },
-      itemCount: EnderecosPageController.to.enderecos.length,
+      itemCount: EnderecosController.to.enderecos.length,
     );
   }
 
@@ -72,7 +72,7 @@ class EnderecosListView extends StatelessWidget {
         Get.back();
         AppDialog(Text('Endereço deletado com sucesso.'), onConfirm: () {
           Get.back();
-          EnderecosPageController.to.fetchEnderecos();
+          EnderecosController.to.fetchEnderecos();
         }, textConfirm: 'Ok')
             .show();
       } else {

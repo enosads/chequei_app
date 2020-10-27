@@ -1,9 +1,9 @@
-import 'dart:math';
 
 import 'package:chequei/models/endereco_model.dart';
 import 'package:chequei/models/erro_model.dart';
 import 'package:chequei/pages/enderecos/endereco_api.dart';
 import 'package:chequei/pages/enderecos/enderecos_page_controller.dart';
+import 'package:chequei/pages/eventos/novo_evento_bottom_sheet_controller.dart';
 import 'package:chequei/utils/api_response.dart';
 import 'package:chequei/widgets/app_dialog.dart';
 import 'package:flutter/material.dart';
@@ -93,9 +93,14 @@ class EditarEnderecoBottomSheetController extends GetxController {
     }
 
     if (response.ok) {
-      print('ok');
-      EnderecosPageController.to.fetchEnderecos();
+      EnderecosController.to.fetchEnderecos();
       Get.back();
+      var eventoController = NovoEventoBottomSheetController.to;
+      if (eventoController != null) {
+        eventoController.fetchEnderecos(
+            selecionarEndereco: response.result);
+
+      }
       AppDialog(
         Text('Endereço salvo com sucesso.'),
         onCancel: () => Get.back(),

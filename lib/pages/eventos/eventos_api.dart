@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:chequei/models/endereco_model.dart';
 import 'package:chequei/models/evento_model.dart';
 import 'package:chequei/utils/api_response.dart';
 import 'package:chequei/utils/http_helper.dart' as http;
@@ -33,4 +34,43 @@ class EventosApi {
     }
   }
 
+  static Future<ApiResponse<Evento>> create(
+    String descricao,
+    Endereco endereco,
+    DateTime horario,
+    int quantidadeVagas,
+  ) async {
+    try {
+      var url = Factory.internal().getUrl() + 'novo_evento/';
+
+      final Map params = {
+        "descricao": descricao,
+        "horario": horario.toString(),
+        "quantidade_de_vagas": quantidadeVagas,
+        "endereco": endereco.id,
+      };
+
+      String s = json.encode(params);
+      print(s);
+      var response = await http.post(url, body: s);
+      print('POST >> $url  Status: ${response.statusCode}');
+
+      Map mapResponse = json.decode(utf8.decode(response.bodyBytes));
+      print(mapResponse);
+
+      if (response.statusCode >= 200 && response.statusCode <= 210) {
+        final evento = Evento.fromMap(mapResponse);
+
+        return ApiResponse.ok(result: evento);
+      } else {
+        final endereco = Evento.fromMap(mapResponse['detail'], error: true);
+
+        return ApiResponse.error(
+            msg: 'Algumas campos possuem erros.', result: endereco);
+      }
+    } catch (error, exception) {
+      print('Erro ao adicionar evento: $error > $exception');
+      return ApiResponse.error(msg: 'Não foi possível adicionar o evento');
+    }
+  }
 }
